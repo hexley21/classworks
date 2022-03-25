@@ -7,7 +7,9 @@ cursor.execute("""
     CREATE TABLE density(
         province_or_teritory TEXT,
         population INTEGER,
-        land_area REAL)""")
+        land_area REAL
+        )"""
+    )
 
 cursor.execute("INSERT INTO density VALUES('Newfoundland and Labrador', 512930, 370501.69)")
 cursor.execute("INSERT INTO density VALUES('Prince Edward Island', 135294, 5684.39)")
@@ -29,6 +31,6 @@ print(cursor.execute('SELECT * FROM density').fetchall())
 print(cursor.execute('SELECT population FROM density').fetchall())
 print(cursor.execute('SELECT province_or_teritory FROM density WHERE population < 1000000').fetchall())
 print(cursor.execute('SELECT province_or_teritory FROM density WHERE population < 1000000 OR population > 5000000').fetchall())
-print(cursor.execute('SELECT province_or_teritory FROM density WHERE population > 1000000 AND population < 5000000').fetchall())
+print(cursor.execute('SELECT province_or_teritory FROM density WHERE population between 1000000 AND 5000000').fetchall())
 print(cursor.execute('SELECT population FROM density WHERE land_area > 200000').fetchall())
 print(cursor.execute('SELECT province_or_teritory, population/land_area FROM density').fetchall())
